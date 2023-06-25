@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
+#include "GameplayTagContainer.h"
 #include "QuestObjective.h"
 #include "Quest.generated.h"
 
@@ -16,6 +17,12 @@ class PROJECTHOOKS_API UQuest : public UPrimaryDataAsset
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, Instanced, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FGameplayTag QuestTag;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString Name;
+	UPROPERTY(EditAnywhere, Instanced, BlueprintReadOnly)
 	TArray<UQuestObjective*> Objectives;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Instanced)
+	TArray<UQuestReward*> Rewards;
 };
